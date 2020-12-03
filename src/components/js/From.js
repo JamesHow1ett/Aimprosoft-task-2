@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import UserMap from '../../lib/UsersMap';
 
 // style
@@ -19,7 +19,7 @@ function From() {
     const target = event.target;
     return (
       setLogin(target.value),
-      setFormSubmit(false)
+      setFormSubmit(formSubmit)
     )
   }
 
@@ -27,7 +27,7 @@ function From() {
     const target = event.target;
     return (
       setPasword(target.value),
-      setFormSubmit(false)
+      setFormSubmit(formSubmit)
     )
   }
 
@@ -42,7 +42,7 @@ function From() {
   function handleSubmit (event) {
     event.preventDefault();
     return (
-      setFormSubmit(true),
+      setFormSubmit(!formSubmit),
       checkInputValues()
     );
   }
@@ -50,9 +50,9 @@ function From() {
   function checkInputValues () {
     if (!Boolean(password)) { return }
     if (!UserMap.has(login) || (UserMap.get(login) !== password)) {
-      return setUserDataIsCorrect(false);
+      return setUserDataIsCorrect(userDataIsCorrect);
     }
-    return setUserDataIsCorrect(true);
+    return setUserDataIsCorrect(!userDataIsCorrect);
   }
 
   function openResetPasswordForm () {
@@ -68,14 +68,14 @@ function From() {
       return (
         setLogin(''),
         setFindedUser(login),
-        setIsFindUserForm(false),
-        setUserInDb(true)
+        setIsFindUserForm(!isFindUserForm),
+        setUserInDb(!userInDb)
       )
     }
-    return setIsFindUserForm(true);
+    return setIsFindUserForm(isFindUserForm);
   }
 
-  function updatePassword (event) {
+  function updatePasswordAndResetState (event) {
     event.preventDefault();
     UserMap.set(findedUser, newPassword);
     return (
@@ -115,7 +115,7 @@ function From() {
             >Find user
             </button>
           </form> :
-          <form onSubmit={updatePassword}>
+          <form onSubmit={updatePasswordAndResetState}>
             <input
               type="password"
               name="new-password"
