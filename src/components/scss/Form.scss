@@ -1,0 +1,50 @@
+.container {
+  height: 500px;
+  width: 500px;
+  border: 1px solid red;
+  margin: 100px auto;
+  padding: 2em;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+
+  &__input {
+    padding: 10px;
+    border: 1px solid silver;
+    border-radius: 10px;
+    
+    &_succes {
+      border-color: green;
+    }
+  
+    &_fail {
+      border-color: red;
+    }
+  }
+
+  &__login {
+    // background-image: url('/static/images/person-black-18dp.svg');
+  }
+
+  &__password {
+
+  }
+
+  &__submit {
+    width: 33%;
+    height: 40px;
+    background-color: #3aa0be;
+    color: #f0f8fa;
+    border: 1px solid transparent;
+    border-radius: 5px;
+  }
+}
