@@ -93,10 +93,11 @@ function From() {
 
   return (
     <div className="container form-container">
-      <div className="form-container__label">
-        <span className="form-container__label_big">Bank</span>
+      <div className="form-container__label-wrapper">
+        <span className="form-container__label_big">Bank&nbsp;</span>
         <span className="form-container__label">Support Portal</span>
       </div>
+      <div className="form-container__body">
       {
         isResetPasswordForm ?
         (
@@ -134,6 +135,17 @@ function From() {
           onSubmit={handleSubmit}
           className="form"
         >
+          <div
+            className={
+              formSubmit ?
+              (
+                userDataIsCorrect ?
+                'login login_succes' :
+                'login login__fail'
+              ) :
+              'login'
+            }
+          >
           <input
             type="text"
             name="login"
@@ -150,6 +162,7 @@ function From() {
               'form__input form__login'
             }
           />
+          </div>
           <input
             type="password"
             name="password"
@@ -173,21 +186,22 @@ function From() {
           </button>
         </form>
       }
-      <div className="reset-pass">
-        {
-          !isResetPasswordForm ?
-          <>
-            <span className="reset-pass__label">Forgot your password?</span>
+        <div className="reset-pass">
+          {
+            !isResetPasswordForm ?
+            <>
+              <span className="reset-pass__label">Forgot your password?&nbsp;</span>
+              <div
+                className="reset-pass__action"
+                onClick={openResetPasswordForm}
+              >Reset it here.</div>
+            </> :
             <div
               className="reset-pass__action"
               onClick={openResetPasswordForm}
-            >Reset it here.</div>
-          </> :
-          <div
-            className="reset-pass__action"
-            onClick={openResetPasswordForm}
-          >Back to login.</div>
-        }
+            >Back to login.</div>
+          }
+        </div>
       </div>
     </div>
   )
