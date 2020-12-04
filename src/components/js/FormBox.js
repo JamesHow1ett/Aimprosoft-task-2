@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import UserMap from '../../lib/UsersMap';
 
-// style
-import '../scss/Form.scss';
+// components
+import LoginForm from './LoginForm';
+import ResetPasswordForm from './ResetPasswordForm';
 
-function From() {
+// style
+import '../scss/FormBox.scss';
+
+function FormBox () {
   const [login, setLogin] = useState('');
   const [password, setPasword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -14,12 +18,14 @@ function From() {
   const [isResetPasswordForm, setIsResetPasswordForm] = useState(false);
   const [userInDb, setUserInDb] = useState(false);
   const [isFindUserForm, setIsFindUserForm] = useState(true);
+  const [isLoginSucces, setIsLoginSucces] = useState(false);
 
   function handleLoginInput (event) {
     const target = event.target;
     return (
       setLogin(target.value),
-      setFormSubmit(formSubmit)
+      setFormSubmit(false),
+      setUserDataIsCorrect(false)
     )
   }
 
@@ -27,7 +33,8 @@ function From() {
     const target = event.target;
     return (
       setPasword(target.value),
-      setFormSubmit(formSubmit)
+      setFormSubmit(false),
+      setUserDataIsCorrect(false)
     )
   }
 
@@ -56,6 +63,9 @@ function From() {
   }
 
   function openResetPasswordForm () {
+    if (isResetPasswordForm) {
+      setLogin('');
+    }
     return (
       setIsResetPasswordForm(!isResetPasswordForm),
       setPasword('')
@@ -102,31 +112,41 @@ function From() {
         isResetPasswordForm ?
         (
           isFindUserForm && !userInDb ?
-          <form onSubmit={findUser}>
+          <form 
+            onSubmit={findUser}
+            className="form"
+          >
             <input
               type="text"
               name="login"
               placeholder="Login"
+              autoComplete="username"
+              className="form__input form__login"
               value={login}
               onChange={handleLoginInput}
             />
             <button
               type="submit"
-              className="form__submit"
+              className="form__submit form__submit_big"
             >Find user
             </button>
           </form> :
-          <form onSubmit={updatePasswordAndResetState}>
+          <form 
+            onSubmit={updatePasswordAndResetState}
+            className="form"
+          >
             <input
               type="password"
               name="new-password"
               placeholder="Enter new password"
+              autoComplete="new-password"
+              className="form__input form__password"
               value={newPassword}
               onChange={handleNewPasswordInput}
             />
             <button
               type="submit"
-              className="form__submit"
+              className="form__submit form__submit_big"
             >Update password
             </button>
           </form>
@@ -141,7 +161,7 @@ function From() {
               (
                 userDataIsCorrect ?
                 'login login_succes' :
-                'login login__fail'
+                'login login_fail'
               ) :
               'login'
             }
@@ -149,7 +169,8 @@ function From() {
           <input
             type="text"
             name="login"
-            placeholder="Login"
+            placeholder="E-mail"
+            autoComplete="username"
             value={login}
             onChange={handleLoginInput}
             className={
@@ -163,22 +184,35 @@ function From() {
             }
           />
           </div>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={password}
-            onChange={handePasswordInput}
+          <div
             className={
               formSubmit ?
               (
                 userDataIsCorrect ?
-                'form__input form__input_succes form__password' :
-                'form__input form__input_fail form__password'
+                'login login_succes' :
+                'login login_fail'
               ) :
-              'form__input form__password'
+              'login'
             }
-          />
+          >
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              autoComplete="current-password"
+              value={password}
+              onChange={handePasswordInput}
+              className={
+                formSubmit ?
+                (
+                  userDataIsCorrect ?
+                  'form__input form__input_succes form__password' :
+                  'form__input form__input_fail form__password'
+                ) :
+                'form__input form__password'
+              }
+            />
+          </div>
           <button
             type="submit"
             className="form__submit"
@@ -207,4 +241,4 @@ function From() {
   )
 }
 
-export default From;
+export default FormBox;
