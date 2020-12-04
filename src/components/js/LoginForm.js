@@ -2,19 +2,18 @@ import React from 'react';
 
 function LoginForm (props) {
   const {
-    handleSubmit,
     formSubmit,
-    userDataIsCorrect,
     login,
-    handleLoginInput,
     password,
+    userDataIsCorrect,
+    handleLoginInput,
     handePasswordInput,
-
+    handleSubmit,
   } = props;
 
   return (
     <form
-      onSubmit={() => handleSubmit()}
+      onSubmit={(e) => handleSubmit(e)}
       className="form"
     >
       <div
@@ -34,7 +33,7 @@ function LoginForm (props) {
         placeholder="E-mail"
         autoComplete="username"
         value={login}
-        onChange={() => handleLoginInput()}
+        onChange={(e) => handleLoginInput(e)}
         className={
           formSubmit ?
           (
@@ -63,7 +62,7 @@ function LoginForm (props) {
           placeholder="Password"
           autoComplete="current-password"
           value={password}
-          onChange={() => handePasswordInput()}
+          onChange={(e) => handePasswordInput(e)}
           className={
             formSubmit ?
             (

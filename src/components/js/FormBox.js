@@ -4,6 +4,7 @@ import UserMap from '../../lib/UsersMap';
 // components
 import LoginForm from './LoginForm';
 import ResetPasswordForm from './ResetPasswordForm';
+import ResetPassControls from './ResetPassControls';
 
 // style
 import '../scss/FormBox.scss';
@@ -18,7 +19,6 @@ function FormBox () {
   const [isResetPasswordForm, setIsResetPasswordForm] = useState(false);
   const [userInDb, setUserInDb] = useState(false);
   const [isFindUserForm, setIsFindUserForm] = useState(true);
-  const [isLoginSucces, setIsLoginSucces] = useState(false);
 
   function handleLoginInput (event) {
     const target = event.target;
@@ -108,134 +108,32 @@ function FormBox () {
         <span className="form-container__label">Support Portal</span>
       </div>
       <div className="form-container__body">
-      {
-        isResetPasswordForm ?
-        (
-          isFindUserForm && !userInDb ?
-          <form 
-            onSubmit={findUser}
-            className="form"
-          >
-            <input
-              type="text"
-              name="login"
-              placeholder="Login"
-              autoComplete="username"
-              className="form__input form__login"
-              value={login}
-              onChange={handleLoginInput}
-            />
-            <button
-              type="submit"
-              className="form__submit form__submit_big"
-            >Find user
-            </button>
-          </form> :
-          <form 
-            onSubmit={updatePasswordAndResetState}
-            className="form"
-          >
-            <input
-              type="password"
-              name="new-password"
-              placeholder="Enter new password"
-              autoComplete="new-password"
-              className="form__input form__password"
-              value={newPassword}
-              onChange={handleNewPasswordInput}
-            />
-            <button
-              type="submit"
-              className="form__submit form__submit_big"
-            >Update password
-            </button>
-          </form>
-        ) :
-        <form
-          onSubmit={handleSubmit}
-          className="form"
-        >
-          <div
-            className={
-              formSubmit ?
-              (
-                userDataIsCorrect ?
-                'login login_succes' :
-                'login login_fail'
-              ) :
-              'login'
-            }
-          >
-          <input
-            type="text"
-            name="login"
-            placeholder="E-mail"
-            autoComplete="username"
-            value={login}
-            onChange={handleLoginInput}
-            className={
-              formSubmit ?
-              (
-                userDataIsCorrect ?
-                'form__input form__input_succes form__login' :
-                'form__input form__input_fail form__login'
-              ) :
-              'form__input form__login'
-            }
+        {
+          isResetPasswordForm ?
+          <ResetPasswordForm 
+            isFindUserForm={isFindUserForm}
+            login={login}
+            newPassword={newPassword}
+            userInDb={userInDb}
+            findUser={findUser}
+            handleLoginInput={handleLoginInput}
+            handleNewPasswordInput={handleNewPasswordInput}
+            updatePasswordAndResetState={updatePasswordAndResetState}
+          /> :
+          <LoginForm
+            formSubmit={formSubmit}
+            login={login}
+            password={password}
+            userDataIsCorrect={userDataIsCorrect}
+            handleLoginInput={handleLoginInput}
+            handePasswordInput={handePasswordInput}
+            handleSubmit={handleSubmit}
           />
-          </div>
-          <div
-            className={
-              formSubmit ?
-              (
-                userDataIsCorrect ?
-                'login login_succes' :
-                'login login_fail'
-              ) :
-              'login'
-            }
-          >
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              autoComplete="current-password"
-              value={password}
-              onChange={handePasswordInput}
-              className={
-                formSubmit ?
-                (
-                  userDataIsCorrect ?
-                  'form__input form__input_succes form__password' :
-                  'form__input form__input_fail form__password'
-                ) :
-                'form__input form__password'
-              }
-            />
-          </div>
-          <button
-            type="submit"
-            className="form__submit"
-          >Login
-          </button>
-        </form>
-      }
-        <div className="reset-pass">
-          {
-            !isResetPasswordForm ?
-            <>
-              <span className="reset-pass__label">Forgot your password?&nbsp;</span>
-              <div
-                className="reset-pass__action"
-                onClick={openResetPasswordForm}
-              >Reset it here.</div>
-            </> :
-            <div
-              className="reset-pass__action"
-              onClick={openResetPasswordForm}
-            >Back to login.</div>
-          }
-        </div>
+        }
+        <ResetPassControls
+          isResetPasswordForm={isResetPasswordForm}
+          openResetPasswordForm={openResetPasswordForm}
+        />
       </div>
     </div>
   )
