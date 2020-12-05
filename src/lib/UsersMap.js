@@ -1,10 +1,24 @@
 // emulate user data in db
 
-const Users = [
-  ['user@mail.ua', '12345'],
-  ['login322', '1488']
-]
+const usersPassword = [
+  ['user@mail.ua', {
+    password: '12345'
+  }],
+  ['login322@fake.mail', {
+    password: '1488'
+  }]
+];
 
-const UsersMap = new Map(Users);
+const usernames = [
+  ['user@mail.ua', {
+    username: 'Bob'
+  }],
+  ['login322@fake.mail', {
+    username: 'Aimprosoft'
+  }]
+];
 
-export default UsersMap;
+const usersPasswordMap = new Map(usersPassword);
+const usernamesMap = new Map(usernames);
+
+export { usersPasswordMap, usernamesMap} ;

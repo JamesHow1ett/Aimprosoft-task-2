@@ -5,6 +5,7 @@ function ResetPasswordForm (props) {
     isFindUserForm,
     login,
     newPassword,
+    noFindUser,
     userInDb,
     findUser,
     handleLoginInput,
@@ -18,15 +19,23 @@ function ResetPasswordForm (props) {
         onSubmit={(e) => findUser(e)}
         className="form"
       >
-        <input
-          type="text"
-          name="login"
-          placeholder="Login"
-          autoComplete="username"
-          className="form__input form__login"
-          value={login}
-          onChange={(e) => handleLoginInput(e)}
-        />
+        <div
+          className={
+            !noFindUser ?
+            "login" :
+            "login login_fail"
+          }
+        >
+          <input
+            type="text"
+            name="login"
+            placeholder="Login"
+            autoComplete="username"
+            className="form__input form__login"
+            value={login}
+            onChange={(e) => handleLoginInput(e)}
+          />
+        </div>
         <button
           type="submit"
           className="form__submit form__submit_big"
