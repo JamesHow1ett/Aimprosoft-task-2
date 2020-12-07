@@ -30,5 +30,5 @@ $ npm start
 
 - Linkedin [Aleksandr Skorokhod](https://www.linkedin.com/in/aleksandr-skorokhod-4630871b2/)
 - GitHub [@JamesHow1ett](https://github.com/JamesHow1ett)
-- Instagram [@a1skorohod](https://instagram.com/a1skorohod)
+- E-mail [Aleksandr Skorokhod](mailto:mopis101@mail.com?subject=[GitHub]%20Work)
 
