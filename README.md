@@ -1,3 +1,5 @@
+[![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/standard/semistandard)
+
 <h1 align="center">Aimprosoft, test task js by O.Skorokhod</h1>
 
 ## Table of Contents
