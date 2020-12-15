@@ -9,7 +9,7 @@ import ResetPassControls from './ResetPassControls';
 import Welcome from './Welcome';
 
 // style
-import '../scss/FormBox.scss';
+import '../scss/FormBox.css';
 
 const initState = initialStateValues();
 
