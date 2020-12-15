@@ -24,6 +24,14 @@ $ npm install
 
 # Run the app
 $ npm start
+
+# Test users
+# User1
+login: user@mail.ua
+password: 12345
+# User2
+login: login322@fake.mail
+password: 1488
 ```
 
 ## Contact
