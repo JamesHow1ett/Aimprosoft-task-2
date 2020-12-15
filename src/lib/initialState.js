@@ -14,7 +14,7 @@ const initialStateValues = () => {
     isSuccesLogin: false,
     isFindUserForm: true,
     noFindUser: false
-  }
-}
+  };
+};
 
 export default initialStateValues;

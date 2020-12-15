@@ -1,3 +1,5 @@
+[![js-semistandard-style](https://raw.githubusercontent.com/standard/semistandard/master/badge.svg)](https://github.com/standard/semistandard)
+
 <h1 align="center">Aimprosoft, test task js by O.Skorokhod</h1>
 
 ## Table of Contents
@@ -28,5 +30,5 @@ $ npm start
 
 - Linkedin [Aleksandr Skorokhod](https://www.linkedin.com/in/aleksandr-skorokhod-4630871b2/)
 - GitHub [@JamesHow1ett](https://github.com/JamesHow1ett)
-- Instagram [@a1skorohod](https://instagram.com/a1skorohod)
+- E-mail [Aleksandr Skorokhod](mailto:mopis101@mail.com?subject=[GitHub]%20Work)
 

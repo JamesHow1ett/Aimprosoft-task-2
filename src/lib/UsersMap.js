@@ -21,4 +21,4 @@ const usernames = [
 const usersPasswordMap = new Map(usersPassword);
 const usernamesMap = new Map(usernames);
 
-export { usersPasswordMap, usernamesMap} ;
+export { usersPasswordMap, usernamesMap };

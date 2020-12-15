@@ -4,9 +4,9 @@ import FormBox from './FormBox';
 
 import '../scss/App.css';
 
-function App() {
+function App () {
   return (
-    <div className="App">
+    <div className='App'>
       <FormBox />
     </div>
   );

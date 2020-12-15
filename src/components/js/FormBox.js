@@ -44,7 +44,7 @@ function FormBox () {
       setFormSubmit(false),
       setUserDataIsCorrect(false),
       setNoFindUser(false)
-    )
+    );
   }
 
   function handePasswordInput (event) {
@@ -53,7 +53,7 @@ function FormBox () {
       setPasword(target.value),
       setFormSubmit(false),
       setUserDataIsCorrect(false)
-    )
+    );
   }
 
   function handleNewPasswordInput (event) {
@@ -63,7 +63,7 @@ function FormBox () {
       setLogin('')
     );
   }
-  
+
   function handleSubmit (event) {
     event.preventDefault();
     return (
@@ -73,13 +73,15 @@ function FormBox () {
   }
 
   function checkInputValues () {
-    if (!Boolean(password)) { return }
-    if (!usersPasswordMap.has(login) || (usersPasswordMap.get(login)['password'] !== password)) {
+    if (!password) {
+      return;
+    }
+    if (!usersPasswordMap.has(login) || (usersPasswordMap.get(login).password !== password)) {
       return setUserDataIsCorrect(userDataIsCorrect);
     }
     return (
       setUserDataIsCorrect(!userDataIsCorrect),
-      setUsername(usernamesMap.get(login)['username'])
+      setUsername(usernamesMap.get(login).username)
     );
   }
 
@@ -93,7 +95,7 @@ function FormBox () {
       setFindedUser(initState.findedUser),
       setUserInDb(initState.userInDb),
       setIsFindUserForm(true)
-    )
+    );
   }
 
   function findUser (event) {
@@ -104,7 +106,7 @@ function FormBox () {
         setFindedUser(login),
         setIsFindUserForm(!isFindUserForm),
         setUserInDb(!userInDb)
-      )
+      );
     }
     return (
       setNoFindUser(true),
@@ -114,7 +116,7 @@ function FormBox () {
 
   function updatePasswordAndResetState (event) {
     event.preventDefault();
-    usersPasswordMap.set(findedUser, {password: newPassword});
+    usersPasswordMap.set(findedUser, { password: newPassword });
     return (
       setLogin(''),
       setPasword(''),
@@ -145,46 +147,43 @@ function FormBox () {
   }
 
   return (
-    <div className="container form-container">
-      <div className="form-container__label-wrapper">
-        <span className="form-container__label_big">Bank&nbsp;</span>
-        <span className="form-container__label">Support Portal</span>
+    <div className='container form-container'>
+      <div className='form-container__label-wrapper'>
+        <span className='form-container__label_big'>Bank&nbsp;</span>
+        <span className='form-container__label'>Support Portal</span>
       </div>
-      {isSuccesLogin ?
-      <Welcome
-        username={username}
-        logout={logout}
-      /> :
-      <div className="form-container__body">
-        {
-          isResetPasswordForm ?
-          <ResetPasswordForm 
-            isFindUserForm={isFindUserForm}
-            login={login}
-            newPassword={newPassword}
-            noFindUser={noFindUser}
-            userInDb={userInDb}
-            findUser={findUser}
-            handleLoginInput={handleLoginInput}
-            handleNewPasswordInput={handleNewPasswordInput}
-            updatePasswordAndResetState={updatePasswordAndResetState}
-          /> :
-          <LoginForm
-            formSubmit={formSubmit}
-            login={login}
-            password={password}
-            userDataIsCorrect={userDataIsCorrect}
-            handleLoginInput={handleLoginInput}
-            handePasswordInput={handePasswordInput}
-            handleSubmit={handleSubmit}
+      {isSuccesLogin
+        ? <Welcome
+            username={username}
+            logout={logout}
           />
-        }
-        <ResetPassControls
-          isResetPasswordForm={isResetPasswordForm}
-          openResetPasswordForm={openResetPasswordForm}
-        />
-      </div>
-      }
+        : <div className='form-container__body'>
+          {isResetPasswordForm
+            ? <ResetPasswordForm
+                isFindUserForm={isFindUserForm}
+                login={login}
+                newPassword={newPassword}
+                noFindUser={noFindUser}
+                userInDb={userInDb}
+                findUser={findUser}
+                handleLoginInput={handleLoginInput}
+                handleNewPasswordInput={handleNewPasswordInput}
+                updatePasswordAndResetState={updatePasswordAndResetState}
+              />
+            : <LoginForm
+                formSubmit={formSubmit}
+                login={login}
+                password={password}
+                userDataIsCorrect={userDataIsCorrect}
+                handleLoginInput={handleLoginInput}
+                handePasswordInput={handePasswordInput}
+                handleSubmit={handleSubmit}
+              />}
+          <ResetPassControls
+            isResetPasswordForm={isResetPasswordForm}
+            openResetPasswordForm={openResetPasswordForm}
+          />
+        </div>}
     </div>
   );
 }
