@@ -81,7 +81,7 @@
 .form div.login_succes::after {
   position: absolute;
   /* content: ""; */
-  content: url('../images/done.png');
+  content: url('../../static/images/done.png');
   top: 10px;
   right: -10px;
   height: 20px;
@@ -92,7 +92,7 @@
 .form div.login_fail::after {
   position: absolute;
   /* content: ""; */
-  content: url('../images/error.png');
+  content: url('../../static/images/error.png');
   top: 10px;
   right: -10px;
   height: 10px;
@@ -130,13 +130,13 @@
 }
 
 .form__login {
-  background-image: url('../images/mail.png');
+  background-image: url('../../static/images/mail.png');
   background-repeat: no-repeat;
   background-position: 15px;
 }
 
 .form__password {
-  background-image: url('../images/lock.png');
+  background-image: url('../../static/images/lock.png');
   background-repeat: no-repeat;
   background-position: 15px;
 }

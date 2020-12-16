@@ -37,19 +37,13 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|woff2|woff)$/i,
         use: [
           {
             loader: 'file-loader',
-            options: {
-              name: '[path][name].[ext]',
-              context: path.resolve(__dirname, "src/"),
-              outputPath: 'images',
-              publicPath: '..',
-              useRelativePaths: true
-            },
           },
         ],
+        include: path.join(__dirname, 'src')
       },
     ]
   },
