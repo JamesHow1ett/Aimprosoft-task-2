@@ -1,0 +1,5 @@
+@font-face {
+  font-family: "NimbusSansDOT-Ligh";
+  font-weight: 400;
+  src: url('../static/fonts/NimbusSansDOT-Ligh.woff') format('woff'), url('../static/fonts/Nimbus-Sans-D-OT-Light_32752.woff2') format('woff2');
+}
